@@ -34,6 +34,14 @@ app.configure('development', function(){
   app.use(express.errorHandler());
 });
 
+app.get( '/users'
+, m.queryObj()
+, m.permissions()
+, m.queryValidation()
+, m.pagination(30)
+, routes.generic.find(db.users)
+);
+
 app.get( '/jobs'
 , m.queryObj()
 , m.permissions()
@@ -46,7 +54,7 @@ app.post( '/jobs'
 , m.queryObj()
 , m.permissions()
 , m.validation()
-, routes.generic.findOne(db.jobs)
+, routes.generic.insert(db.jobs)
 );
 
 app.get( '/jobs/:id'

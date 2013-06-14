@@ -56,7 +56,7 @@ generic.update = function(collection, options){
 
 generic.remove = function(collection){
   return function(req, res){
-    db.insults.remove(req.queryObj, req.queryOptions, function(error, results, result){
+    collection.remove(req.queryObj, req.queryOptions, function(error, results, result){
       if (error) return res.error(400);
 
       if (result.rowCount == 0) return res.status(404).end();

@@ -111,5 +111,30 @@ describe('/jobs', function(){
         done();
       });
     });
+
+    it('should 404', function(done){
+      var jobId = 99999999;
+
+      var job = {
+        isActive: true
+      };
+
+      utils.api.put('/jobs/' + jobId, job, function(error, response, results){
+        assert.equal(!error, true);
+        assert.equal(response.statusCode, 404);
+        done();
+      });
+    });
+  });
+
+  describe('DEL /jobs/:jobId', function(){
+    it('should delete a job', function(done){
+      var jobId = 2;
+      utils.api.del('/jobs/' + jobId, function(error, response, results){
+        assert.equal(!error, true);
+        assert.equal(response.statusCode, 204);
+        done();
+      });
+    });
   });
 });

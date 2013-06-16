@@ -10,7 +10,6 @@ var fns = [];
 
 config.changeEnvironment('test');
 
-
 // Connect to the Database
 fns.push(function(done){
   db.connect({ connStr: config.db.connStr }, done);

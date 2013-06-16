@@ -14,6 +14,7 @@ var
 
     for (var key in _config) module.exports[key] = _config[key];
 
+    module.exports.env = env;
     module.exports.changeEnvironment = changeEnvironment;
   }
 ;

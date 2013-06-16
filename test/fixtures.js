@@ -1,5 +1,10 @@
+var config = require('../config');
+
+require('sugar');
+
 var fixtures = module.exports = {
   jobs: []
+, leqs: []
 };
 
 // Job: 1
@@ -42,3 +47,18 @@ fixtures.jobs.push({
   , password:     'bk4441'
   }
 });
+
+// Half-second Leqs
+(function(){
+  var createdAt = Date.create().beginningOfDay().addDays(-1);
+  var jobId = 1;
+
+  for (var i = 0; i < 1000; i++){
+    fixtures.leqs.push({
+      jid:        jobId
+    , db:         46 + (Math.random() * 10)
+    , duration:   0.5
+    , createdAt:  createdAt.addMilliseconds(500).format(config.db.dateFormat)
+    });
+  }
+})();

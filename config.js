@@ -31,6 +31,10 @@ config.default = {
     dateFormat: '{yyyy}-{MM}-{dd} {HH}:{mm}:{ss}'
   , connStr:    'postgres://localhost:5432/enrg'
   }
+
+, bcrypt: {
+    workFactor: 4
+  }
 };
 
 config.test = {

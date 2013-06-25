@@ -3,8 +3,9 @@ var config = require('../config');
 require('sugar');
 
 var fixtures = module.exports = {
-  jobs: []
-, leqs: []
+  jobs:   []
+, leqs:   []
+, users:  []
 };
 
 // Job: 1
@@ -62,3 +63,22 @@ fixtures.jobs.push({
     });
   }
 })();
+
+// Users: 1
+fixtures.users.push({
+  jobs: []
+, email: "user1@enrgconsultants.com"
+, password: "$2a$04$a.sCeR/XiIEADZxPbnVj1eNgzv2kqHO3qoBw20CxpU9uIis0U34Wa"
+, passwordSalt: null
+, permissions: null
+});
+
+// Users: 2
+// Used for delete test
+fixtures.users.push({
+  jobs: []
+, email: "user2@enrgconsultants.com"
+, password: "$2a$04$a.sCeR/XiIEADZxPbnVj1eNgzv2kqHO3qoBw20CxpU9uIis0U34Wa"
+, passwordSalt: null
+, permissions: null
+});

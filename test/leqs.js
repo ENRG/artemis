@@ -10,7 +10,7 @@ describe('/jobs/:jobId/leqs', function(){
 
     it('should return leqs', function(done){
       var jobId = 1;
-      utils.api.get('/jobs/' + jobId + '/leqs', function(error, response, results){
+      utils.api.get('/api/jobs/' + jobId + '/leqs', function(error, response, results){
         assert.equal(!error, true);
         assert.equal(response.statusCode, 200);
 
@@ -29,7 +29,7 @@ describe('/jobs/:jobId/leqs', function(){
 
     it('should return leqs id desc by default', function(done){
       var jobId = 1;
-      utils.api.get('/jobs/' + jobId + '/leqs', function(error, response, results){
+      utils.api.get('/api/jobs/' + jobId + '/leqs', function(error, response, results){
         assert.equal(!error, true);
         assert.equal(response.statusCode, 200);
 
@@ -47,7 +47,7 @@ describe('/jobs/:jobId/leqs', function(){
       var jobId = 1;
       var createdAt = Date.create().beginningOfDay().addDays(-1).addSeconds(250);
 
-      utils.api.get('/jobs/' + jobId + '/leqs?start=' + createdAt.format(config.db.dateFormat), function(error, response, results){
+      utils.api.get('/api/jobs/' + jobId + '/leqs?start=' + createdAt.format(config.db.dateFormat), function(error, response, results){
         assert.equal(!error, true);
         assert.equal(response.statusCode, 200);
 
@@ -65,7 +65,7 @@ describe('/jobs/:jobId/leqs', function(){
       var jobId = 1;
       var createdAt = Date.create().beginningOfDay().addDays(-1).addSeconds(250);
 
-      utils.api.get('/jobs/' + jobId + '/leqs?end=' + createdAt.format(config.db.dateFormat), function(error, response, results){
+      utils.api.get('/api/jobs/' + jobId + '/leqs?end=' + createdAt.format(config.db.dateFormat), function(error, response, results){
         assert.equal(!error, true);
         assert.equal(response.statusCode, 200);
 
@@ -83,7 +83,7 @@ describe('/jobs/:jobId/leqs', function(){
       var jobId = 1;
       var start = Date.create().beginningOfDay().addDays(-1).addSeconds(100);
       var end = Date.create().beginningOfDay().addDays(-1).addSeconds(150);
-      var url = '/jobs/' + jobId + '/leqs'
+      var url = '/api/jobs/' + jobId + '/leqs'
               + '?start=' + start.format(config.db.dateFormat)
               + '&end=' + end.format(config.db.dateFormat);
 
@@ -103,7 +103,7 @@ describe('/jobs/:jobId/leqs', function(){
 
     it('should drain leqs', function(done){
       var jobId = 1, drain = 500;
-      utils.api.get('/jobs/' + jobId + '/leqs?drain=' + drain, function(error, response, results){
+      utils.api.get('/api/jobs/' + jobId + '/leqs?drain=' + drain, function(error, response, results){
         assert.equal(!error, true);
         assert.equal(response.statusCode, 200);
 

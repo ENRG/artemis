@@ -43,7 +43,7 @@ generic.update = function(collection, options){
 
   return function(req, res){
     collection.update(req.queryObj, req.body, req.queryOptions, function(error, results, result){
-      if (error) return res.error(400);
+      if (error) return console.log(error), res.error(400);
 
       if (result.rowCount == 0) return res.status(404).end();
 

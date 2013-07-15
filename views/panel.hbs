@@ -15,10 +15,9 @@
         <div class="jobs-dropdown dropdown">
           <a href="#" class="dropdown-toggle" data-toggle="dropdown">Pxp <span class="caret-wrap"><b class="caret"></b></span></a>
           <ul class="dropdown-menu">
-            <li><a href="#">Pxp</a></li>
-            <li><a href="#">Race Partners Pad</a></li>
-            <li><a href="#">Rose B Unit</a></li>
-            <li><a href="#">Diagnostics 504</a></li>
+            {{#each jobs}}
+            <li><a href="#/jobs/{{this.id}}">{{this.name}}</a></li>
+            {{/each}}
           </ul>
         </div>
 
@@ -28,7 +27,7 @@
           <li class="nav-account dropdown">
             <a class="dropdown-toggle" data-toggle="dropdown" href="#">John Fawcett <i class="icon-chevron-down"></i></a>
             <ul class="dropdown-menu">
-              <li><a href="#">Sign Out</a></li>
+              <li><a href="#"><i class="icon-signout"></i> Sign Out</a></li>
             </ul>
           </li>
         </ul>

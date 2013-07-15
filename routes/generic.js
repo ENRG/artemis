@@ -1,5 +1,11 @@
 var generic = module.exports = {};
 
+generic.view = function(name){
+  return function(req, res){
+    res.render(name);
+  };
+}
+
 generic.find = function(collection){
   return function(req, res){
     collection.find(req.queryObj, req.queryOptions, function(error, results){

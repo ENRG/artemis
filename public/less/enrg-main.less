@@ -1,0 +1,150 @@
+@navbar-color:  #BAC4D6;
+@navbar-bg:     #346283;
+
+body {
+  font-family: 'Roboto', sans-serif;
+  font-size: 13px;
+  background-image: url('../img/pattern-3.png');
+}
+
+.container {
+  width: @screen-large;
+}
+
+.app-container {
+  margin-top: 40px;
+  border-radius: @border-radius-base;
+  box-shadow: 0 0 3px rgba(0, 0, 0, 0.4);
+}
+
+.app-navbar.navbar {
+  margin-bottom: 0;
+  padding-right: 0;
+
+  // Outline border with radius and inset
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.13),
+     0  -1px 0 #0e2f47, /* Top    */
+     1px 0   0 #0e2f47, /* Right  */
+     0   1px 0 #284255, /* Bottom */
+    -1px 0   0 #0e2f47; /* Left   */
+
+  border-bottom-left-radius: 0;
+  border-bottom-right-radius: 0;
+
+  z-index: 1;
+}
+
+.app-navbar .navbar-nav > li > a {
+  padding-top: 12px;
+  padding-bottom: 11px;
+}
+
+.app-navbar .navbar-nav > li > a,
+.app-navbar .dropdown > a {
+  color: @navbar-color;
+  text-shadow: 0 -1px 0 rgba(0,0,0, 0.5);
+}
+
+.app-navbar .dropdown > a {
+  display: block;
+}
+
+.app-navbar .dropdown > a:hover,
+.app-navbar .dropdown > a:focus {
+  text-decoration: none;
+}
+
+.app-navbar .dropdown > a .caret {
+  border-top-color: @navbar-color;
+  border-bottom-color: @navbar-color;
+}
+
+.app-navbar .navbar-nav .nav-account > a {
+  color: lighten(@navbar-color, 18%);
+}
+
+.app-navbar .nav-account .icon-chevron-down {
+  display: inline-block;
+  vertical-align: middle;
+  margin-left: 6px;
+  padding-bottom: 2px;
+  font-size: 10px;
+  color: @navbar-color;
+}
+
+.app-navbar .jobs-dropdown {
+  display: inline-block;
+  margin: 8px 0;
+  margin-left: -3px;
+  min-width: 146px;
+  background: #2D5877;
+  border-radius: 2px;
+  border: solid 1px #2C485C;
+  font-size: 12px;
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.07),
+          0 1px 0 rgba(255, 255, 255, 0.05);
+}
+
+.jobs-dropdown .caret-wrap {
+  padding-left: 8;
+  position: absolute;
+  right: 0;
+  top: 0;
+  height: 100%;
+  width: 28px;
+  border-left: solid 1px #2C485C;
+  box-shadow: inset 1px 0 0 rgba(255, 255, 255, 0.05);
+}
+
+.jobs-dropdown .caret-wrap > .caret {
+  margin-top: 11px;
+  box-shadow: 0 -1px 0 rgba(0, 0, 0, 0.1);
+}
+
+.app-navbar .jobs-dropdown .dropdown-toggle {
+  position: relative;
+  padding: 4px 12px;
+  padding-right: 42px;
+}
+
+.app-content {
+  height: 600px;
+  background: #fff;
+  border-bottom-left-radius: @border-radius-base;
+  border-bottom-right-radius: @border-radius-base;
+}
+
+.app-side-nav {
+  height: 100%;
+  padding-top: 20px;
+  background: #EEF1F3;
+  border-bottom-left-radius: @border-radius-base;
+  border-right: solid 1px #ddd;
+}
+
+.app-side-nav.nav > li > a {
+  padding-top: 5px;
+  padding-bottom: 5px;
+  color: #718496;
+}
+
+.app-side-nav.nav > li > a:hover {
+  background: #E5EBF0;
+}
+
+.app-side-nav.nav > li.active > a {
+  background: @brand-primary;
+  border-bottom: solid 1px #468CB8;
+  border-top: solid 1px #468CB8;
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.18);
+  color: lighten(@brand-primary, 95%);
+  text-shadow: 0 1px 0 rgba(0, 0, 0, 0.4);
+}
+
+.app-side-nav .nav-icon {
+  display: inline-block;
+  width: 14px;
+  margin-right: 6px;
+}

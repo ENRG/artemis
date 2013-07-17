@@ -3,9 +3,14 @@
     <link href='http://fonts.googleapis.com/css?family=Roboto:400,100,100italic,300,300italic,400italic,500,500italic,700,700italic,900,900italic|Roboto+Condensed:300italic,400italic,700italic,400,300,700' rel='stylesheet' type='text/css'>
     <link rel="stylesheet" href="/less/main.css">
     <link href="//netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.min.css" rel="stylesheet">
-    <script src="http://code.jquery.com/jquery-1.10.2.min.js"></script>
+    <script src="http://code.jquery.com/jquery.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/moment.js/2.0.0/moment.min.js"></script>
+    <script src="http://code.highcharts.com/stock/highstock.js"></script>
+    <script src="http://code.highcharts.com/highcharts.js"></script>
+    <script src="http://code.highcharts.com/stock/modules/exporting.js"></script>
     <script src="js/dropdown.js"></script>
     <script src="js/collapse.js"></script>
+    <script src="js/app.js"></script>
   </head>
   <body>
     <div class="app-container container">
@@ -13,7 +18,7 @@
       {{! Application Navbar }}
       <div class="app-navbar navbar">
         <div class="jobs-dropdown dropdown">
-          <a href="#" class="dropdown-toggle" data-toggle="dropdown">Pxp <span class="caret-wrap"><b class="caret"></b></span></a>
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown">Drill Site #4 <span class="caret-wrap"><b class="caret"></b></span></a>
           <ul class="dropdown-menu">
             {{#each jobs}}
             <li><a href="#/jobs/{{this.id}}">{{this.name}}</a></li>
@@ -51,8 +56,12 @@
           </div>
 
           {{! Main Content Area }}
-          <div class="col-10">
-            
+          <div class="col-10 main-content-wrapper">
+            <ul class="breadcrumb">
+              <li><a href="#">Drill Site #4</a></li>
+              <li class="active">Real-Time</li>
+            </ul>
+            <div id="container" style="height: 400px; width: 102.4%; margin-left: -15px"></div>
           </div>
         </div>
       </div>

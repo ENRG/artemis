@@ -1,5 +1,6 @@
 @navbar-color:  #BAC4D6;
 @navbar-bg:     #346283;
+@enrg-gutter:   22px;
 
 body {
   font-family: 'Roboto', sans-serif;
@@ -178,10 +179,26 @@ body {
 }
 
 .app-content {
-  height: 600px;
   background: #fff;
   border-bottom-left-radius: @border-radius-base;
   border-bottom-right-radius: @border-radius-base;
+}
+
+.app-content-row {
+  position: relative;
+}
+
+.app-content-row > .app-side-nav-col {
+  position: absolute;
+  height: 100%;
+}
+
+.app-footer {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  text-align: right;
+  padding-right: 32px;
 }
 
 .app-side-nav {
@@ -218,7 +235,9 @@ body {
 }
 
 .main-content-wrapper {
+  position: relative;
   margin-top: 15px;
-  margin-left: -@grid-gutter-width / 2;
-  padding-right: @grid-gutter-width / 2;
+  margin-left: 15.666667%;
+  padding-right: @enrg-gutter;
+  padding-bottom: 80px;
 }

@@ -40,10 +40,9 @@
 
       {{! Application Content }}
       <div class="app-content">
-        <div class="row">
-
+        <div class="row app-content-row">
           {{! Left-hand Nav }}
-          <div class="col-2">
+          <div class="col-2 app-side-nav-col">
             <ul class="nav nav-stacked app-side-nav">
               <li class="nav-header">Activity</li>
               <li class="active"><a href="#"><i class="nav-icon icon-bar-chart"></i>Real-Time</a></li>
@@ -52,16 +51,25 @@
               <li><a href="#"><i class="nav-icon icon-play-sign"></i>Listen</a></li>
               <li class="nav-header">Account</li>
               <li><a href="#"><i class="nav-icon icon-cogs"></i>Settings</a></li>
+              {{#ifAdmin user}}
+              <li class="nav-header">Job Settings</li>
+              <li><a href="#"><i class="nav-icon icon-group"></i>Users</a></li>
+              <li><a href="#"><i class="nav-icon icon-cog"></i>Setup</a></li>
+              {{/ifAdmin}}
             </ul>
           </div>
 
           {{! Main Content Area }}
-          <div class="col-10 main-content-wrapper">
+          <div class="col-offset-2 col-10 main-content-wrapper">
             <ul class="breadcrumb">
               <li><a href="#">Drill Site #4</a></li>
               <li class="active">Real-Time</li>
             </ul>
             <div id="container" style="height: 400px; width: 102.4%; margin-left: -15px"></div>
+
+            <div class="app-footer">
+              <img src="img/logo.png" alt="" class="logo">
+            </div>
           </div>
         </div>
       </div>

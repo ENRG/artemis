@@ -19,7 +19,6 @@ utils.ajax = function(method, url, data, callback){
   }
 
   if (method === "GET" || method === "get"){
-    console.log("sending", url, "to query params");
     url += utils.queryParams(data);
     data = null;
   }
@@ -160,7 +159,6 @@ $(function() {
                 lastId = results[0].id;
 
                 for (var i = results.length - 1; i >= 0; --i){
-                  console.log("Adding: ", (new Date(results[i].createdAt)).getTime(), results[i].db)
                   series.addPoint(
                     [ (new Date(results[i].createdAt)).getTime(), results[i].db ]
                   , true
@@ -177,6 +175,8 @@ $(function() {
         }
       , zoomType: 'x'
       },
+
+      // colors: ['#339ADA'],
       
       rangeSelector: {
         buttons: [],

@@ -174,6 +174,13 @@ $(function() {
           }
         }
       , zoomType: 'x'
+      , plotShadow: true
+      },
+
+      plotOptions: {
+        series: {
+          enableMouseTracking: false
+        }
       },
 
       // colors: ['#339ADA'],

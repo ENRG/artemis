@@ -25,7 +25,7 @@ config.default = {
     limit: 30
   }
 
-, port: 3000
+, port: process.env.ENRG_HTTP_PORT || 3000
 
 , db: {
     dateFormat: '{yyyy}-{MM}-{dd} {HH}:{mm}:{ss}'

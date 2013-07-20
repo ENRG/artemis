@@ -180,8 +180,13 @@ body {
 
 .app-content {
   background: #fff;
-  border-bottom-left-radius: @border-radius-base;
+  border-radius: @border-radius-base;
   border-bottom-right-radius: @border-radius-base;
+}
+
+.page-panel .app-content {
+  border-top-left-radius: 0;
+  border-top-right-radius: 0;
 }
 
 .app-content-row {

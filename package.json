@@ -19,6 +19,9 @@
     "async": "~0.2.9",
     "passport-local": "~0.1.6",
     "less-middleware": "~0.1.12",
-    "hbs": "~2.3.0"
+    "hbs": "~2.3.0",
+    "stdm": "0.0.x",
+    "dirac": "0.0.x",
+    "dirac-middleware": "0.0.x"
   }
 }

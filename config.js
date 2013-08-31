@@ -29,7 +29,7 @@ config.default = {
 
 , db: {
     dateFormat: '{yyyy}-{MM}-{dd} {HH}:{mm}:{ss}'
-  , connStr:    'postgres://localhost:5432/enrg'
+  , connString: 'postgres://localhost:5432/enrg'
   }
 
 , bcrypt: {

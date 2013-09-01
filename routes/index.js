@@ -1,5 +1,4 @@
 module.exports = {
-  generic:  require('./generic')
-, session:  require('./session')
+  session:  require('./session')
 , panel:    require('./panel')
 };

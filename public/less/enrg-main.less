@@ -27,13 +27,18 @@ body {
   // Outline border with radius and inset
   box-shadow:
     inset 0 1px 0 rgba(255, 255, 255, 0.13),
-     0  -1px 0 #0e2f47, /* Top    */
-     1px 0   0 #0e2f47, /* Right  */
-     0   1px 0 #284255, /* Bottom */
-    -1px 0   0 #0e2f47; /* Left   */
+     0  -1px 0 #0e2f47,
+     1px 0   0 #0e2f47,
+     0   1px 0 #284255,
+    -1px 0   0 #0e2f47;
 
   border-bottom-left-radius: 0;
   border-bottom-right-radius: 0;
+  border: 0;
+
+  background-color: @navbar-bg;
+
+  min-height: 0;
 
   z-index: 1;
 }
@@ -54,6 +59,12 @@ body {
   display: block;
 }
 
+.app-navbar .nav > li > a:hover,
+.app-navbar .nav > li > a:focus {
+  background: none;
+  color: lighten(@navbar-color, 8%);
+}
+
 .app-navbar .dropdown > a:hover,
 .app-navbar .dropdown > a:focus {
   text-decoration: none;
@@ -64,7 +75,9 @@ body {
   border-bottom-color: @navbar-color;
 }
 
-.app-navbar .navbar-nav .nav-account > a {
+// .app-navbar .navbar-nav .nav-account > a,
+// .app-navbar .navbar-nav .nav-account > a:hover,
+.app-navbar .navbar-nav .nav-account.open > a {
   color: lighten(@navbar-color, 18%);
 }
 
@@ -80,7 +93,7 @@ body {
 .app-navbar .jobs-dropdown {
   display: inline-block;
   margin: 8px 0;
-  margin-left: -3px;
+  margin-left: 12px;
   min-width: 146px;
   background: #2D5877;
   border-radius: 2px;

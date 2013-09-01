@@ -9,6 +9,7 @@
 // Grays
 // -------------------------
 
+@off-gray:               #3C4144;
 @gray-darker:            lighten(#000, 13.5%); // #222
 @gray-dark:              lighten(#000, 20%);   // #333
 @gray:                   lighten(#000, 33.5%); // #555
@@ -28,7 +29,7 @@
 // -------------------------
 
 @body-bg:               #fff;
-@text-color:            @gray-dark;
+@text-color:            @off-gray;
 
 // Links
 // -------------------------
@@ -47,6 +48,7 @@
 @font-size-base:          14px;
 @font-size-large:         ceil(@font-size-base * 1.25); // ~18px
 @font-size-small:         ceil(@font-size-base * 0.85); // ~12px
+@font-size-mini:          ceil(@font-size-base * 0.75); // ~11px
 
 @line-height-base:        1.428571429; // 20/14
 @line-height-computed:    floor(@font-size-base * @line-height-base); // ~20px
@@ -66,10 +68,10 @@
 // -------------------------
 // Based on 14px font-size and 1.428 line-height (~20px to start)
 
-@padding-base-vertical:          6px;
+@padding-base-vertical:          8px;
 @padding-base-horizontal:        12px;
 
-@padding-large-vertical:         10px;
+@padding-large-vertical:         14px;
 @padding-large-horizontal:       16px;
 
 @padding-small-vertical:         5px;

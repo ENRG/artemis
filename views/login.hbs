@@ -1,7 +1,7 @@
 <html>
   <head>
     <link href='http://fonts.googleapis.com/css?family=Roboto:400,100,100italic,300,300italic,400italic,500,500italic,700,700italic,900,900italic|Roboto+Condensed:300italic,400italic,700italic,400,300,700' rel='stylesheet' type='text/css'>
-    <link rel="stylesheet" href="/less/main2.css">
+    <link rel="stylesheet" href="/less/main.css">
     <link rel="stylesheet" href="/less/login.css">
     <link href="//netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.min.css" rel="stylesheet">
     <script src="http://code.jquery.com/jquery.min.js"></script>
@@ -9,39 +9,37 @@
     <script src="js/collapse.js"></script>
   </head>
   <body class="page-login">
-    <div class="container">
-      <div class="row">
-        <div class="app-container col-4 col-offset-4">
-          <div class="app-content">
-            <div style="padding: 12px">
-              <img src="/img/logo.png" alt="">
-              <form class="form-horizontal" method="POST" action="/login">
-                <div class="control-group">
-                  <label class="control-label" for="inputEmail">Email</label>
-                  <div class="controls">
-                    <input type="text" name="email" id="inputEmail" placeholder="Email">
-                  </div>
-                </div>
-                <div class="control-group">
-                  <label class="control-label" for="inputPassword">Password</label>
-                  <div class="controls">
-                    <input type="password" name="password" id="inputPassword" placeholder="Password">
-                    <div class="checkbox">
-                      <label>
-                        <input type="checkbox"> Remember me
-                      </label>
-                    </div>
-                  </div>
-                </div>
-                <div class="control-group">
-                  <div class="controls">
-                    <button type="submit" class="btn btn-info">Sign in</button>
-                  </div>
-                </div>
-              </form>
+    <div class="app-container">
+      <div class="app-content">
+        <img src="/img/logo.png" alt="">
+        <form class="form-horizontal" method="POST" action="/login" role="form">
+          <div class="form-group">
+            <div class="col-lg-12">
+              <label for="inputEmail1" class="control-label">Email</label>
+              <input type="email" name="email" class="form-control" id="inputEmail1" placeholder="Email">
             </div>
           </div>
-        </div>
+          <div class="form-group">
+            <div class="col-lg-12">
+              <label for="inputPassword1" class="control-label">Password</label>
+              <input type="password" name="password" class="form-control" id="inputPassword1" placeholder="Password">
+            </div>
+          </div>
+          <div class="form-group">
+            <div class="col-lg-12">
+              <div class="checkbox">
+                <label>
+                  <input type="checkbox"> Remember me
+                </label>
+              </div>
+            </div>
+          </div>
+          <div class="form-group">
+            <div class="col-lg-10">
+              <button type="submit" class="btn btn-info">Sign in</button>
+            </div>
+          </div>
+        </form>
       </div>
     </div>
   </body>

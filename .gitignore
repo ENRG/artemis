@@ -2,3 +2,4 @@
 node_modules/
 public/less/*.css
 public/bower_components/
+public/jam/

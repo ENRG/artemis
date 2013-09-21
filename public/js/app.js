@@ -118,7 +118,7 @@ $(function() {
 
   var startDate = moment().subtract('minutes', 5).format('YYYY-MM-DD HH:mm:ss');
 
-  utils.api.get('/api/jobs/1/leqs', { start: startDate, limit: 5000 }, function(error, results){
+  utils.api.get('/api/jobs/3/leqs', { start: startDate, limit: 300 }, function(error, results){
     if (error) return console.error(error), setTimeout(onTick, config.tickInterval);
 
     lastId = results[0].id;

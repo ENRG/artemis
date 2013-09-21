@@ -23,5 +23,13 @@
     "stdm": "0.0.x",
     "dirac": "0.0.x",
     "dirac-middleware": "0.0.x"
+  },
+  "jam": {
+    "packageDir": "public/jam",
+    "baseUrl": "public",
+    "dependencies": {
+      "domReady": "2.0.x",
+      "backbone": "1.0.x"
+    }
   }
 }

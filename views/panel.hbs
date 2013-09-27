@@ -3,75 +3,27 @@
     <link href='http://fonts.googleapis.com/css?family=Roboto:400,100,100italic,300,300italic,400italic,500,500italic,700,700italic,900,900italic|Roboto+Condensed:300italic,400italic,700italic,400,300,700' rel='stylesheet' type='text/css'>
     <link rel="stylesheet" href="/less/main.css">
     <link href="//netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.min.css" rel="stylesheet">
-    <script src="http://code.jquery.com/jquery.min.js"></script>
-    <script src="//cdnjs.cloudflare.com/ajax/libs/moment.js/2.0.0/moment.min.js"></script>
-    <script src="http://code.highcharts.com/stock/highstock.js"></script>
-    <script src="http://code.highcharts.com/stock/modules/exporting.js"></script>
-    <script src="js/dropdown.js"></script>
-    <script src="js/collapse.js"></script>
-    <script src="js/app.js"></script>
+
+    <script src="/components/requirejs/require.js"></script>
+    <script src="/apps/business-panel/require.config.js"></script>
+    <script>
+      define('job', function( require ){
+        var Models = require('models');
+        return new Models.Job( {{{json job}}} );
+      });
+
+      define('user', function( require ){
+        var Models = require('models');
+        return new Models.User( {{{json user}}} );
+      });
+    </script>
+    <script>
+      require( [ 'app' ], function( app ){
+        app.init();
+      });
+    </script>
   </head>
   <body class="page-panel">
-    <div class="app-container container">
-
-      {{! Application Navbar }}
-      <div class="app-navbar navbar">
-        <div class="jobs-dropdown dropdown">
-          <a href="#" class="dropdown-toggle" data-toggle="dropdown">Drill Site #4 <span class="caret-wrap"><b class="caret"></b></span></a>
-          <ul class="dropdown-menu">
-            {{#each jobs}}
-            <li><a href="#/jobs/{{this.id}}">{{this.name}}</a></li>
-            {{/each}}
-          </ul>
-        </div>
-
-        <ul class="nav navbar-nav pull-right">
-          <li><a href="#">Home</a></li>
-          <li><a href="#">Help</a></li>
-          <li class="nav-account dropdown">
-            <a class="dropdown-toggle" data-toggle="dropdown" href="#">John Fawcett <i class="icon-chevron-down"></i></a>
-            <ul class="dropdown-menu">
-              <li><a href="/logout"><i class="icon-signout"></i> Sign Out</a></li>
-            </ul>
-          </li>
-        </ul>
-      </div>
-
-      {{! Application Content }}
-      <div class="app-content">
-        <div class="row app-content-row">
-          {{! Left-hand Nav }}
-          <div class="col-xs-2 app-side-nav-col">
-            <ul class="nav nav-stacked app-side-nav">
-              <li class="nav-header">Activity</li>
-              <li class="active"><a href="#"><i class="nav-icon icon-bar-chart"></i>Real-Time</a></li>
-              <li class="nav-header">Reporting</li>
-              <li><a href="#"><i class="nav-icon icon-th-list"></i>Daily Reports</a></li>
-              <li><a href="#"><i class="nav-icon icon-play-sign"></i>Listen</a></li>
-              <li class="nav-header">Account</li>
-              <li><a href="#"><i class="nav-icon icon-cogs"></i>Settings</a></li>
-              {{#ifAdmin user}}
-              <li class="nav-header">Job Settings</li>
-              <li><a href="#"><i class="nav-icon icon-group"></i>Users</a></li>
-              <li><a href="#"><i class="nav-icon icon-cog"></i>Setup</a></li>
-              {{/ifAdmin}}
-            </ul>
-          </div>
-
-          {{! Main Content Area }}
-          <div class="col-xs-offset-2 col-xs-10 main-content-wrapper">
-            <ul class="breadcrumb">
-              <li><a href="#">Drill Site #4</a></li>
-              <li class="active">Real-Time</li>
-            </ul>
-            <div id="container" style="height: 400px; width: 102.4%; margin-left: -15px"></div>
-
-            <div class="app-footer">
-              <img src="img/logo.png" alt="" class="logo">
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
+    
   </body>
 </html>

@@ -4,13 +4,18 @@ define(function(require){
   var utils       = require('utils');
   var job         = require('job');
 
+  Handlebars.registerHelper('location', function( key ){
+    if ( !key ) return window.location;
+    return window.location[ key ];
+  });
+
   Handlebars.registerHelper('config', function( key ){
     if ( !key ) return config;
     return config[ key ];
   });
 
   Handlebars.registerHelper('job', function( key ){
-    if ( !key ) return config;
+    if ( !key ) return job.toJSON();
     return job.get( key );
   });
 });

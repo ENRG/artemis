@@ -25,17 +25,34 @@ define(function(require){
   , regions: {
       'content':      '.app-main-content'
     , 'sidebar':      '.app-side-nav'
-    , 'breadcrumbs':  '.app-side-nav'
+    , 'breadcrumbs':  '.breadcrumb'
+    }
+
+  , initialize: function(){
+      this.children.breadcrumbs.setNavView( this.children.sidebar );
+
+      return this;
     }
 
   , render: function(){
       this.setElement( this.template() );
 
       this.applyRegions();
+      this.renderRegions();
 
-      for ( var key in this.regions ){
-        this.children[ key.replace('>', '') ].render();
-      }
+      return this;
+    }
+
+    /**
+     * Changes the main application area page
+     * @param  {String} page    The page to switch to
+     * @param  {Object} options Options for page init/onShow and transition
+     * @return {View}           The Backbone.View representing the page
+     */
+  , changePage: function( page, options ){
+      this.children.sidebar.changePage( page );
+      this.children.breadcrumbs.changePage( page );
+      return this.children.content.changeView( page, options );
     }
   });
 });

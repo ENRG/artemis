@@ -23,15 +23,8 @@ define(function(require){
       });
     }
 
-    /**
-     * Changes the main application area page
-     * @param  {String} page    The page to switch to
-     * @param  {Object} options Options for page init/onShow and transition
-     * @return {View}           The Backbone.View representing the page
-     */
-  , changePage: function( page, options ){
-      app.view.children.sidebar.changePage( page );
-      return app.view.children.content.changeView( page, options );
+  , changePage: function( page ){
+      app.view.changePage.apply( app.view, arguments );
     }
   }, utils.clone( utils.Events ));
 

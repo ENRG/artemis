@@ -30,7 +30,9 @@ define(function(require){
   , render: function(){
       if ( this.template ){
         this.$el.html(
-          this.template( this.model ? this.model.toJSON() : null )
+          this.template( this.model ? (
+            this.model.toJSON ? this.model.toJSON() : this.model
+          ) : null )
         );
       }
 

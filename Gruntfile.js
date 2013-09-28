@@ -15,7 +15,7 @@ module.exports = function( grunt ){
   //   }
 
   , requireGrouper: {
-      main: {
+      components: {
         dirs: [
           './public/apps/business-panel/components'
         , './public/apps/business-panel/pages'
@@ -72,7 +72,7 @@ module.exports = function( grunt ){
   );
 
   config.watch.grouper.files = config.watch.grouper.files.concat(
-    config.requireGrouper.main.dirs.map( function( dir ){
+    config.requireGrouper.components.dirs.map( function( dir ){
       return dir + '/*/*.js';
     })
   );

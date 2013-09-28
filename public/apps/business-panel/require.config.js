@@ -44,6 +44,16 @@ requirejs.config({
       main: 'index.js'
     },
     {
+      name: 'models',
+      location: 'models',
+      main: 'index.js'
+    },
+    {
+      name: 'collections',
+      location: 'collections',
+      main: 'index.js'
+    },
+    {
       name: 'backbone.present',
       location: '../../components/backbone.present',
       main: 'backbone.present.js'

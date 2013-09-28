@@ -9,10 +9,22 @@ define(function(require){
   return utils.View.extend({
     template: require('hbs!./breadcrumbs-tmpl')
 
+  , initialize: function(){
+      this.model = {};
+      return this;
+    }
+
+  , setNavView: function( view ){
+      this.navView = view;
+      return this;
+    }
+
   , changePage: function( page ){
-      this.$el.find('.page-name').text(
-        this.options.sidebar.$el.find( '[data-page="' + page + ']' ).text()
-      );
+      if ( !this.navView ) throw new Error('BreadCrumbs.changePage - attempting to change page before nav view set');
+
+      this.model.page = this.navView.$el.find( '[data-page="' + page + '"]' ).text();
+      this.render();
+
       return this;
     }
   });

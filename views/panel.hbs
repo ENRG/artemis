@@ -8,8 +8,13 @@
     <script src="/apps/business-panel/require.config.js"></script>
     <script>
       define('job', function( require ){
-        var Models = require('models');
-        return new Models.Job( {{{json job}}} );
+        var jobs = require('jobs');
+        return jobs.get( {{jobId}} );
+      });
+
+      define('jobs', function( require ){
+        var Collections = require('collections');
+        return new Collections.Jobs( {{{json jobs}}} );
       });
 
       define('user', function( require ){

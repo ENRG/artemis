@@ -11,18 +11,16 @@ var fns = [];
 config.changeEnvironment('test');
 
 // Connect to the Database
-fns.push(function(done){
-  db.connect({ connStr: config.db.connStr }, done);
-});
+db.init( utils.extend( { noSync: true }, config.db ) );
 
 // Drop all tables
 fns.push(function(done){
-  db.dropAllTables(done);
+  db.dropAllTables( done );
 });
 
 // Sync all tables
 fns.push(function(done){
-  db.sync(done);
+  db.sync( done );
 });
 
 // Start Artemis in another process
@@ -34,13 +32,13 @@ fns.push(function(done){
   http.createServer(server).listen(server.get('port'), done);
 });
 
-// Insert data
+// // Insert data
 for (var key in fixtures){
   (function(table, records){
     for (var i = 0; i < records.length; i++){
       (function(record){
         fns.push(function(done){
-          db[table].insert(record, done);
+          db[table].insert(record, setImmediate( done ));
         });
       })(records[i]);
     }

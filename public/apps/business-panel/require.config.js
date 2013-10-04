@@ -20,7 +20,9 @@ requirejs.config({
     handlebars: '../../components/handlebars/handlebars',
     'handlebars.runtime': '../../components/handlebars/handlebars.runtime',
     json2: '../../components/json2/json2',
-    i18nprecompile: '../../components/hbs/hbs/i18nprecompile'
+    i18nprecompile: '../../components/hbs/hbs/i18nprecompile',
+    bower: '../../components',
+    dropdown: '../../components/bootstrap/js/dropdown'
   },
   packages: [
     {

@@ -28,6 +28,7 @@
     "backbone.present": "~0.1.3",
     "bootstrap": "~3.0.0",
     "handlebars": "~1.0.0",
-    "json2": "*"
+    "json2": "*",
+    "handlebars-layouts": "*"
   }
 }

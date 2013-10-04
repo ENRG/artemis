@@ -13,16 +13,19 @@
       <div class="app-content">
         <img src="/img/logo.png" alt="">
         <form class="form-horizontal" method="POST" action="/login" role="form">
+          {{#if error}}
+          <div class="alert-login-error">Invalid email/password combination.</div>
+          {{/if}}
           <div class="form-group">
             <div class="col-lg-12">
-              <label for="inputEmail1" class="control-label">Email</label>
-              <input type="email" name="email" class="form-control" id="inputEmail1" placeholder="Email">
+              <label for="email" class="control-label">Email</label>
+              <input type="email" name="email" class="form-control" id="email" placeholder="Email">
             </div>
           </div>
           <div class="form-group">
             <div class="col-lg-12">
-              <label for="inputPassword1" class="control-label">Password</label>
-              <input type="password" name="password" class="form-control" id="inputPassword1" placeholder="Password">
+              <label for="password" class="control-label">Password</label>
+              <input type="password" name="password" class="form-control" id="password" placeholder="Password">
             </div>
           </div>
           <div class="form-group">

@@ -4,3 +4,4 @@ public/less/*.css
 public/bower_components/
 public/components/
 public/jam/
+public/css/*.gen.css

@@ -1,0 +1,12 @@
+.page-login .app-container {
+  width: 360px;
+  padding: 0;
+  margin-left: auto;
+  margin-right: auto;
+}
+.page-login .app-content {
+  padding: 12px;
+}
+.page-login .control-label + .form-control {
+  margin-top: 4px;
+}

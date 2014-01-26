@@ -6,6 +6,12 @@
     "start": "node app",
     "test": "./node_modules/mocha/bin/mocha -R spec -b"
   },
+  "namedModules": {
+    "db": "./db",
+    "config": "./config",
+    "errors": "./lib/errors",
+    "utils": "./lib/utils"
+  },
   "dependencies": {
     "express": "3.0.6",
     "jade": "*",
@@ -31,6 +37,9 @@
     "bower": "~1.2.6",
     "grunt-bower-requirejs": "~0.7.1",
     "grunt-contrib-jshint": "~0.6.4",
-    "grunt-contrib-watch": "~0.5.3"
+    "grunt-contrib-watch": "~0.5.3",
+    "grunt-named-modules": "~1.0.1",
+    "grunt-express-server": "~0.4.11",
+    "grunt-contrib-less": "~0.9.0"
   }
 }

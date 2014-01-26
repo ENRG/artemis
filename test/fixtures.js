@@ -3,50 +3,55 @@ var config = require('../config');
 require('sugar');
 
 var fixtures = module.exports = {
-  jobs:   []
+  nmts:   []
+, jobs:   []
 , leqs:   []
 , users:  []
 };
 
+fixtures.nmts.push({
+  id:       601
+, address:  'localhost'
+, port:     10001
+});
+
+fixtures.nmts.push({
+  id:       602
+, address:  'localhost'
+, port:     10002
+});
+
 // Job: 1
 fixtures.jobs.push({
-  name:           'Test Job 1'
-, lat:            0
-, lon:            0
-, company:        'ENRG Consultants'
-, ambient:        50
-, allowableDay:   5
-, allowableNight: 3
-, threshold1:     5
-, threshold2:     10
-, threshold3:     15
-, isActive:       false
-, nmt: {
-    id:           601
-  , address:      '601.enrgnmt.com'
-  , password:     'bk4441'
-  }
+  name:             'Test Job 1'
+, lat:              0
+, lon:              0
+, company:          'ENRG Consultants'
+, ambient:          50
+, allowable_day:    5
+, allowable_night:  3
+, threshold_1:      5
+, threshold_2:      10
+, threshold_3:      15
+, is_active:        false
+, nmt_id:           601
 });
 
 // Job: 2
 // Used for delete test
 fixtures.jobs.push({
-  name:           'Test Job 2'
-, lat:            0
-, lon:            0
-, company:        'ENRG Consultants'
-, ambient:        50
-, allowableDay:   5
-, allowableNight: 3
-, threshold1:     5
-, threshold2:     10
-, threshold3:     15
-, isActive:       false
-, nmt: {
-    id:           601
-  , address:      '601.enrgnmt.com'
-  , password:     'bk4441'
-  }
+  name:             'Test Job 2'
+, lat:              0
+, lon:              0
+, company:          'ENRG Consultants'
+, ambient:          50
+, allowable_day:    5
+, allowable_night:  3
+, threshold_1:      5
+, threshold_2:      10
+, threshold_3:      15
+, is_active:        false
+, nmt_id:           601
 });
 
 // Half-second Leqs

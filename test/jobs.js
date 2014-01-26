@@ -63,22 +63,18 @@ describe('/api/jobs', function(){
   describe('POST /jobs', function(){
     it('should create a job', function(done){
       var job = {
-        name:           'Test Job Alpha'
-      , lat:            0
-      , lon:            0
-      , company:        'ENRG Consultants'
-      , ambient:        50
-      , allowableDay:   5
-      , allowableNight: 3
-      , threshold1:     5
-      , threshold2:     10
-      , threshold3:     15
-      , isActive:       false
-      , nmt: {
-          id:           601
-        , address:      '601.enrgnmt.com'
-        , password:     'bk4441'
-        }
+        name:             'Test Job Alpha'
+      , lat:              0
+      , lon:              0
+      , company:          'ENRG Consultants'
+      , ambient:          50
+      , allowable_day:    5
+      , allowable_night:  3
+      , threshold_1:      5
+      , threshold_2:      10
+      , threshold_3:      15
+      , is_active:        false
+      , nmt_id:           601
       };
 
       utils.api.post('/api/jobs', job, function(error, response, results){

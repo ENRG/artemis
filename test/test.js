@@ -1,10 +1,11 @@
 var proc      = require('child_process');
 var http      = require('http');
-var utils     = require('../lib/utils');
-var db        = require('leto');
-var config    = require('../config');
+var utils     = require('utils');
+var db        = require('db');
+var config    = require('config');
 var server    = require('../');
 var fixtures  = require('./fixtures');
+var MockNmt   = require('../lib/mock-nmt');
 
 var fns = [];
 
@@ -26,6 +27,17 @@ fns.push(function(done){
   db.sync( function( error ){
     if ( error ) return done( error );
     setTimeout( done, 500 );
+  });
+});
+
+// Start the mock-NMTs
+fns.push(function( done ){
+  db.nmts.find({ online: true }, function( error, nmts ){
+    if ( error ) return done( error );
+
+    nmts.forEach( function( nmt ){
+      new MockNmt( nmt ).listen();
+    });
   });
 });
 

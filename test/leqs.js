@@ -1,7 +1,7 @@
 var assert = require('assert');
 var utils  = require('../lib/utils');
 var config = require('../config');
-var db     = require('leto');
+var db     = require('db');
 
 require('sugar');
 

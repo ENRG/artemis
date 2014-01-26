@@ -2,7 +2,7 @@
 
 var program = require('commander');
 var http    = require('http');
-var db      = require('leto');
+var db      = require('db');
 var server  = require('../');
 var pkg     = require('../package.json');
 var config  = require('../config');

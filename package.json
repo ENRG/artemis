@@ -7,7 +7,7 @@
     "test": "./node_modules/mocha/bin/mocha -R spec -b"
   },
   "namedModules": {
-    "db": "./db",
+    "db": "./db/index.js",
     "config": "./config",
     "errors": "./lib/errors",
     "utils": "./lib/utils"

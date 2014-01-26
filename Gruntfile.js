@@ -40,14 +40,6 @@ module.exports = function( grunt ){
         }
       },
 
-      grouper: {
-        files: [],
-        tasks: ['requireGrouper'],
-        options: {
-          spawn: false,
-        }
-      },
-
       less: {
         files: [
           'routes/**/*.less'
@@ -96,12 +88,6 @@ module.exports = function( grunt ){
 
   config.watch.scripts.files = config.watch.scripts.files.concat(
     config.jshint.all
-  );
-
-  config.watch.grouper.files = config.watch.grouper.files.concat(
-    config.requireGrouper.components.dirs.map( function( dir ){
-      return dir + '/*/*.js';
-    })
   );
 
   grunt.initConfig( config );

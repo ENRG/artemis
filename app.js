@@ -1,5 +1,5 @@
 var http    = require('http');
-var db      = require('leto');
+var db      = require('db');
 var server  = require('./');
 var config  = require('./config');
 

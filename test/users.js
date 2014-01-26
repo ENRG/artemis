@@ -1,6 +1,6 @@
 var assert = require('assert');
 var utils  = require('../lib/utils');
-var db     = require('leto');
+var db     = require('db');
 
 describe('/api/users', function(){
   describe('GET /api/users', function(){

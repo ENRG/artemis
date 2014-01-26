@@ -35,9 +35,9 @@ fns.push(function( done ){
   db.nmts.find({ online: true }, function( error, nmts ){
     if ( error ) return done( error );
 
-    nmts.forEach( function( nmt ){
-      new MockNmt( nmt ).listen();
-    });
+    utils.async.series( nmts.map( function( nmt ){
+      return function( done ){ new MockNmt( nmt ).listen( done ) };
+    }), done );
   });
 });
 

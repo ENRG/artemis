@@ -40,7 +40,8 @@ config.default = {
 config.test = {
   port: 4000
 , db: {
-    connStr:    'postgres://localhost:5432/enrg-test'
+    dateFormat: '{yyyy}-{MM}-{dd} {HH}:{mm}:{ss}'
+  , connString: 'postgres://localhost:5432/enrg_test'
   }
 };
 

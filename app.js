@@ -3,6 +3,10 @@ var db      = require('leto');
 var server  = require('./');
 var config  = require('./config');
 
+db.init( config.db );
+
+server.init();
+
 server.configure(function(){
   server.set('port', config.port);
 });

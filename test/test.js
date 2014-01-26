@@ -15,21 +15,32 @@ db.init( utils.extend( { noSync: true }, config.db ) );
 
 // Drop all tables
 fns.push(function(done){
-  db.dropAllTables( done );
+  db.dropAllTables( function( error ){
+    if ( error ) return done( error );
+    setTimeout( done, 500 );
+  });
 });
 
 // Sync all tables
 fns.push(function(done){
-  db.sync( done );
+  db.sync( function( error ){
+    if ( error ) return done( error );
+    setTimeout( done, 500 );
+  });
 });
 
 // Start Artemis in another process
 fns.push(function(done){
+  server.init();
+
   server.configure(function(){
     server.set('port', config.port);
   });
 
-  http.createServer(server).listen(server.get('port'), done);
+  http.createServer(server).listen(server.get('port'), function(){
+    console.log("Artemis listening on port " + server.get('port'));
+    done();
+  });
 });
 
 // // Insert data

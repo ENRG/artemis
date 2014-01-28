@@ -17,7 +17,7 @@ module.exports = {
       type: 'text'
     , default: "'bk4441'"
     }
-  , online: {
+  , is_active: {
       type: 'boolean'
     , default: false
     }

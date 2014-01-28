@@ -93,7 +93,7 @@ describe('/api/jobs', function(){
       var jobId = 1;
 
       var job = {
-        isActive: true
+        is_active: true
       };
 
       utils.api.put('/api/jobs/' + jobId, job, function(error, response, results){
@@ -102,7 +102,7 @@ describe('/api/jobs', function(){
 
 
         assert.equal(results.data.id, jobId);
-        assert.equal(results.data.isActive, true);
+        assert.equal(results.data.is_active, true);
 
         done();
       });
@@ -112,7 +112,7 @@ describe('/api/jobs', function(){
       var jobId = 99999999;
 
       var job = {
-        isActive: true
+        is_active: true
       };
 
       utils.api.put('/api/jobs/' + jobId, job, function(error, response, results){

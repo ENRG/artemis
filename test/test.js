@@ -5,7 +5,7 @@ var db        = require('db');
 var config    = require('config');
 var server    = require('../');
 var fixtures  = require('./fixtures');
-var MockNmt   = require('../lib/mock-nmt');
+var nmts      = require('../lib/nmts');
 
 var fns = [];
 
@@ -13,6 +13,8 @@ config.changeEnvironment('test');
 
 // Connect to the Database
 db.init( utils.extend( { noSync: true }, config.db ) );
+
+nmts.init().start();
 
 // Drop all tables
 fns.push(function(done){
@@ -27,17 +29,6 @@ fns.push(function(done){
   db.sync( function( error ){
     if ( error ) return done( error );
     setTimeout( done, 500 );
-  });
-});
-
-// Start the mock-NMTs
-fns.push(function( done ){
-  db.nmts.find({ online: true }, function( error, nmts ){
-    if ( error ) return done( error );
-
-    utils.async.series( nmts.map( function( nmt ){
-      return function( done ){ new MockNmt( nmt ).listen( done ) };
-    }), done );
   });
 });
 

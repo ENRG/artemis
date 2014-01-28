@@ -10,15 +10,17 @@ var fixtures = module.exports = {
 };
 
 fixtures.nmts.push({
-  id:       601
-, address:  'localhost'
-, port:     10001
+  id:         601
+, address:    'localhost'
+, port:       10001
+, is_active:  true
 });
 
 fixtures.nmts.push({
-  id:       602
-, address:  'localhost'
-, port:     10002
+  id:         602
+, address:    'localhost'
+, port:       10002
+, is_active:  true
 });
 
 // Job: 1

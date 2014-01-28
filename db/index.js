@@ -2,7 +2,9 @@ var db = module.exports = {};
 
 require('./mosql-helpers');
 
-var dirac = require('dirac');
+var dirac   = require('dirac');
+var config  = require('config');
+var utils   = require('utils');
 var filters = require('./dirac-filters');
 
 var tables = [
@@ -16,6 +18,8 @@ var tables = [
 for ( var key in dirac ) db[ key ] = dirac[ key ];
 
 db.init = function( options ){
+  options = options || {};
+
   dirac.destroy();
 
   dirac.use( filters.expandReferences );
@@ -25,7 +29,7 @@ db.init = function( options ){
     return require( './dals/' + t );
   }).forEach( dirac.register );
 
-  dirac.init( options );
+  dirac.init( utils.extend( {}, config.db, options ) );
 
   if ( !options.noSync ) dirac.sync( options.syncOptions );
 

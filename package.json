@@ -8,9 +8,9 @@
   },
   "namedModules": {
     "db": "./db/index.js",
-    "config": "./config",
-    "errors": "./lib/errors",
-    "utils": "./lib/utils"
+    "config": "./config.js",
+    "errors": "./lib/errors.js",
+    "utils": "./lib/utils.js"
   },
   "dependencies": {
     "express": "3.0.6",

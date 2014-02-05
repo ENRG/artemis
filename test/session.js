@@ -2,6 +2,8 @@ var assert = require('assert');
 var utils  = require('../lib/utils');
 var db     = require('db');
 
+require('sugar');
+
 describe('/api/session', function(){
   describe('POST /api/session', function(){
     it('should return session', function(done){

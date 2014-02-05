@@ -2,6 +2,8 @@ var assert = require('assert');
 var utils  = require('../lib/utils');
 var db     = require('db');
 
+require('sugar');
+
 describe('/api/jobs', function(){
   describe('GET /jobs', function(){
     it('should return jobs', function(done){

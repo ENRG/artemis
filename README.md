@@ -4,7 +4,7 @@ This application is the main ENRG HTTP server.
 
 ## Getting Started
 
-Ensure you have node.js ```>=0.8.0``` and Postgres ```>=9.2``` installed.
+Ensure you have node.js ```>=10.0.0``` and Postgres ```>=9.2``` installed.
 
 Install the grunt CLI globally:
 

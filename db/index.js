@@ -2,7 +2,7 @@ var db = module.exports = {};
 
 require('./mosql-helpers');
 
-var copy    = require('pg-copy-stream');
+var copy    = require('pg-copy-streams');
 var dirac   = require('dirac');
 var config  = require('config');
 var utils   = require('utils');

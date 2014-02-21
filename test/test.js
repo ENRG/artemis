@@ -6,7 +6,7 @@ var config    = require('config');
 var server    = require('../');
 var fixtures  = require('./fixtures');
 var nmts      = require('../lib/nmts');
-var MockNmt   = require('../lib/mock-nmt');
+var MockNmt   = require('p4441-stream').MockServer;
 
 var fns = [];
 

@@ -59,11 +59,11 @@ fixtures.jobs.push({
 // Half-second Leqs
 (function(){
   var createdAt = Date.create().beginningOfDay().addDays(-1);
-  var jobId = 1;
+  var nmt_id = 601;
 
   for (var i = 0; i < 1000; i++){
     fixtures.leqs.push({
-      jid:        jobId
+      nmt_id:     nmt_id
     , db:         46 + (Math.random() * 10)
     , duration:   0.5
     , createdAt:  createdAt.addMilliseconds(500).format(config.db.dateFormat)

@@ -35,6 +35,12 @@ config.default = {
 , bcrypt: {
     workFactor: 4
   }
+
+, nmt: {
+    remoteLeqPath:    '/NMT/NMTDATA/MINUTE'
+  , localLeqPath:     './data/:nmtId/minute'
+  , timestampOffset:  252460800 + ( new Date().getTimezoneOffset() * 60 )
+  }
 };
 
 config.test = {

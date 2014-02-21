@@ -1,4 +1,5 @@
 var mosql = require('mongo-sql');
+var utils = require('utils');
 
 // Upsert query type
 // Warning: This is subject to some sort of race condition

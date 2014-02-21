@@ -4,7 +4,7 @@ var program = require('commander');
 var db      = require('db');
 var config  = require('config');
 var pkg     = require('../package.json');
-var MockNmt = require('../lib/mock-nmt');
+var MockNmt = require('p4441-stream').MockServer;
 
 program
   .version(pkg.version)

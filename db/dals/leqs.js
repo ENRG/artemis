@@ -9,10 +9,10 @@ module.exports = {
     , primaryKey: true
     }
 
-  , jid: {
+  , nmt_id: {
       type: 'int'
     , references: {
-        table: 'jobs'
+        table: 'nmts'
       , column: 'id'
       }
     }

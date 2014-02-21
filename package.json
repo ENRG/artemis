@@ -4,7 +4,8 @@
   "private": true,
   "scripts": {
     "start": "node app",
-    "test": "./node_modules/mocha/bin/mocha -R spec -b"
+    "test": "./node_modules/mocha/bin/mocha -R spec -b",
+    "install": "bower install"
   },
   "namedModules": {
     "db": "./db/index.js",
@@ -34,7 +35,8 @@
     "machina": "~0.3.5",
     "p4441-stream": "~0.1.2",
     "ftp": "~0.3.6",
-    "pg-copy-streams": "~0.2.1"
+    "pg-copy-streams": "~0.2.1",
+    "mkdirp": "~0.3.5"
   },
   "devDependencies": {
     "grunt": "~0.4.1",

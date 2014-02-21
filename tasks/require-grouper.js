@@ -48,7 +48,7 @@ module.exports = function( grunt ){
         return fs.statSync( path.resolve( dir, file ) ).isDirectory();
       }).forEach( function( dirPath ){
         var index = require( path.resolve( dir, dirPath ) );
-        
+
         // Did not specify exports, do not write
         if ( !('exports' in index) ) return;
         // The key of the output is the exports value on the module

@@ -37,9 +37,11 @@ config.default = {
   }
 
 , nmt: {
-    remoteLeqPath:    '/NMT/NMTDATA/MINUTE'
-  , localLeqPath:     './data/:nmtId/minute'
-  , timestampOffset:  252460800 + ( new Date().getTimezoneOffset() * 60 )
+    remoteLeqPath:           '/NMT/NMTDATA/MINUTE'
+  , localLeqPath:            './data/:nmtId/minute'
+  , remoteThirdOctavePath:   '/NMT/NMTDATA/SPECTRA'
+  , localThirdOctavePath:    './data/:nmtId/third-octave'
+  , timestampOffset:         252460800 + ( new Date().getTimezoneOffset() * 60 )
   }
 };
 
@@ -52,7 +54,7 @@ config.test = {
 };
 
 config.dev = {
-  
+
 };
 
 config.production = {

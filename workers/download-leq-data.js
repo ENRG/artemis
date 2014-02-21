@@ -1,5 +1,5 @@
 /**
- * Worker: Download Data Files
+ * Worker: Download LEQ Files
  */
 
 var fs      = require('fs');
@@ -16,12 +16,15 @@ var onError = function( error ){
 
 var onNmtLoaded = function( nmt, callback ){
   var ftp = new utils.FtpClient();
+  var loc = config.nmt.localLeqPath.replace( ':nmtId', nmt.id );
+  //  ./data/507/minute
 
   var onFile = function( file, callback ){
     var $query = {
       nmt_id:  nmt.id
     , date:   +file.name.replace( '.dat', '' )
     , size:   +file.size
+    , type:   'leq'
     };
 
     db.nmt_hourly_logs.findOne( $query, function( error, log ){
@@ -29,15 +32,14 @@ var onNmtLoaded = function( nmt, callback ){
 
       // Log was found to be the same size
       if ( log ) return callback();
-      
+
       var p = path.join( config.nmt.remoteLeqPath, file.name );
 
       ftp.get( p, function( error, fstream ){
         if ( error ) return callback( error );
 
-        var loc = config.nmt.localLeqPath.replace( ':nmtId', nmt.id );
-
         fstream.pipe(
+          // ./data/507/20140222.dat
           fs.createWriteStream( path.join( loc, file.name ) )
         );
 
@@ -46,12 +48,14 @@ var onNmtLoaded = function( nmt, callback ){
           var data = {
             nmt_id:  nmt.id
           , date:   $query.date
+          , type:   $query.type
           , size:   +file.size
           };
 
           var $where = {
             nmt_id: data.id
           , date:   data.date
+          , type:   $query.type
           };
 
           db.nmt_hourly_logs.upsert( data, $where, callback );

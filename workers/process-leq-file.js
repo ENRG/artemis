@@ -32,22 +32,35 @@ var onGap = function( gap, callback ){
   var whilstBody = function( callback ){
     var end = gap.end;
 
-    // If the gap spans multiple days,
-    // we need to properly split it up
+    // If the gap spans multiple days, split it up
     if ( end.beginningOfDay().getTime() !== curr.beginningOfDay().getTime() ){
-      end = curr.endOfDay();
+      end = curr.addDays(1).beginningOfDay();
     }
 
     db.nmt_leqs.copy( function( error, copyStream ){
       if ( error ) return callback( error );
 
-      var fstream = fs.createReadStream( file ).pipe(
-        LeqToPgStream.create({ nmt_id: gp.nmt_id })
+      var leqStream = LeqToPgStream.create({
+        nmt_id: gp.nmt_id
+      , start:  curr
+      , end:    end
+      });
+
+      var fstream = fs.createReadStream(
+        file
+      ).pipe(
+        leqStream
       ).pipe(
         copyStream
+      ).on(
+        'error', callback
+      ).on(
+        'end', function(){
+          // Progress current to the end
+          curr = end;
+        }
       );
     });
-
   };
 
   fs.exists( file, function( result ){

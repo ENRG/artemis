@@ -1,4 +1,4 @@
-var copy  = require('pg-copy-stream');
+var copy  = require('pg-copy-streams');
 var utils = require('utils');
 var pg    = require('pg');
 
@@ -11,7 +11,7 @@ module.exports = function( dirac ){
       }
 
       var query = utils.defaults( options, {
-        type:       'copy'
+        type:       'copy-from'
       , table:      this.table
       , expression: 'stdin'
       });
@@ -21,7 +21,10 @@ module.exports = function( dirac ){
       pg.connect( this.connString, function( error, client, done ){
         if ( error ) return callback( error );
 
-        callback( null, client.query( query.toString(), query.values ) );
+        var copyTo = copy.from( query.toString(), query.values );
+        callback( null, client.query( copyTo ) );
+        copyTo.on( 'end',   done );
+        copyTo.on( 'error', done );
       });
     }
   });

@@ -34,7 +34,9 @@
     "machina": "~0.3.5",
     "p4441-stream": "~0.1.2",
     "ftp": "~0.3.6",
-    "pg-copy-streams": "~0.2.1"
+    "pg-copy-streams": "~0.2.1",
+    "pg": "~2.11.1",
+    "combined-stream": "0.0.4"
   },
   "devDependencies": {
     "grunt": "~0.4.1",

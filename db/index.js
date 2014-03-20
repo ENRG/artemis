@@ -18,6 +18,7 @@ db.init = function( options ){
   dirac.use( dirac.tableRef() );
   dirac.use( filters.expandReferences );
   dirac.use( filters.upsert );
+  dirac.use( filters.copy );
   dirac.use( dirac.dir( __dirname + '/dals' ) );
 
   dirac.init( utils.extend( {}, config.db, options ) );

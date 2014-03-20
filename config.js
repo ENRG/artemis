@@ -39,7 +39,8 @@ config.default = {
 , nmt: {
     remoteLeqPath:    '/NMT/NMTDATA/MINUTE'
   , localLeqPath:     './data/:nmtId/minute'
-  , timestampOffset:  252460800 + ( new Date().getTimezoneOffset() * 60 )
+  , timestampOffset:  252464400 + ( new Date().getTimezoneOffset() * 60 )
+  , datMinSize:       1448
   }
 };
 

@@ -1,11 +1,13 @@
 #!/usr/bin/env node
 
 var program         = require('commander');
+var ProgressBar     = require('progress');
 var fs              = require('fs');
 var db              = require('db');
-var CombinedStream  = require('combined-stream')
+var CombinedStream  = require('combined-stream');
 var LeqToPgStream   = require('../lib/leq-file-to-pg-stream');
 var config          = require('config');
+var DataToType      = require('../lib/data-to-type');
 
 require('sugar');
 
@@ -17,6 +19,7 @@ program
   .option('-b, --begin <date>', 'Start date', Date.create )
   .option('-e, --end <date>',   'End date', Date.create )
   .option('-s, --stdout',       'Only output to stdout (good for testing)')
+  .option('-i, --silent',       'Do not write to stdout')
   .option('--read-start <n>')
   .option('--read-end <n>')
   .parse( process.argv );
@@ -62,30 +65,49 @@ if (
   source = process.stdin;
 }
 
-(function( next ){
-  if ( program.stdout ) return next( process.stdout );
+db.nmts.findOne( program.nmt, function( error, nmt ){
+  if ( error ) throw error;
 
-  var options = {
-    columns: [ 'nmt_id', 'duration', 'createdAt', 'db' ]
-  };
+  (function( next ){
+    if ( program.stdout ) return next( process.stdout );
 
-  db.leqs.copy( options, function( error, cstream ){
-    if ( error ) throw error;
+    var options = {
+      columns: [ 'nmt_id', 'duration', 'createdAt', 'db' ]
+    };
 
-    next( cstream );
+    db.leqs.copy( options, function( error, cstream ){
+      if ( error ) throw error;
+
+      next( cstream );
+    });
+  })(function( target ){
+    var lstream = LeqToPgStream.create({
+      nmt_id:           program.nmt
+    , timestamp_offset: nmt.timestamp_offset
+    });
+
+    if ( !program.stdout && !program.silent ){
+      console.log();
+      var bar = new ProgressBar( 'processing :bar :percent :etas', {
+        total: 60 * 24
+      , incomplete: ' '
+      , width: 40
+      });
+
+      lstream.on( 'eom', function(){
+        bar.tick();
+      });
+    }
+
+    source.on( 'end', function(){
+      console.log('\n');
+      setTimeout( process.exit.bind( process, 0 ), 1000 );
+    });
+
+    source.on( 'error', function( error ){
+      throw error;
+    });
+
+    source.pipe( lstream ).pipe( target );
   });
-})(function( target ){
-  source.on( 'end', function(){
-    process.exit(0);
-  });
-
-  source.on( 'error', function( error ){
-    throw error;
-  });
-
-  source.pipe(
-    LeqToPgStream.create({
-      nmt_id: program.nmt
-    })
-  ).pipe( target );
 });

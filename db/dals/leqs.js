@@ -1,4 +1,5 @@
 var dirac = require('dirac');
+var utils = require('utils');
 
 module.exports = {
   name: 'leqs'
@@ -48,5 +49,48 @@ module.exports = {
 
       if (callback) callback(null, results);
     });
+  }
+
+, findGaps: function( query, callback ){
+    utils.defaults( query, {
+      interval: 10
+    , unit: 'minute'
+    });
+
+    var $query = {
+      type: 'select'
+    , columns: [
+        { table: 'pairs', name: 'gap',                  alias: 'duration' }
+      , { table: 'pairs', name: 'createdAt',            alias: 'end' }
+      , { expression: 'pairs."createdAt" - pairs.gap',  alias: 'start'}
+      ]
+    , table: {
+        type: 'select'
+      , alias: 'pairs'
+      , table: this.table
+      , columns: [
+          'createdAt'
+        , { expression: '"createdAt" - lag( "createdAt" ) over w', alias: 'gap' }
+        ]
+      , window: {
+          name: 'w'
+        , as: { order: { 'createdAt': 'asc' } }
+        }
+      }
+    , where: {
+        'pairs.gap': {
+          $custom: [ 'pairs.gap > \'' + query.interval + ' ' + query.unit + '\'::interval' ]
+        }
+      , 'pairs.start': {
+          $custom: [ 'pairs."createdAt" - pairs.gap >= $1', query.start ]
+        }
+      }
+    };
+
+    if ( query.end ){
+      $query.where.createdAt = { $lt: query.end };
+    }
+
+    return this.query( $query, callback );
   }
 };

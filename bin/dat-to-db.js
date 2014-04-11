@@ -100,7 +100,7 @@ db.nmts.findOne( program.nmt, function( error, nmt ){
     }
 
     source.on( 'end', function(){
-      console.log('\n');
+      if ( !program.stdout && !program.silent ) console.log('\n');
       setTimeout( process.exit.bind( process, 0 ), 1000 );
     });
 

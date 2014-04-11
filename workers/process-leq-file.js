@@ -21,7 +21,7 @@ var onGap = function( gap, callback ){
 
   var file = path.join(
     config.nmt.dataPath
-  , gap.nmt_id
+  , gap.nmt.id
   , curr.format('YYYYMMdd.dat')
   );
 
@@ -40,8 +40,8 @@ var onGap = function( gap, callback ){
     db.nmt_leqs.copy( function( error, copyStream ){
       if ( error ) return callback( error );
 
-      var leqStream = LeqToPgStream.create({
-        nmt_id: gp.nmt_id
+      var lstream = LeqToPgStream.create({
+        nmt_id: gap.nmt.id
       , start:  curr
       , end:    end
       });
@@ -49,17 +49,15 @@ var onGap = function( gap, callback ){
       var fstream = fs.createReadStream(
         file
       ).pipe(
-        leqStream
+        lstream
       ).pipe(
         copyStream
       ).on(
         'error', callback
-      ).on(
-        'end', function(){
-          // Progress current to the end
-          curr = end;
-        }
-      );
+      ).on( 'end', function(){
+        // Progress current to the end
+        curr = end;
+      });
     });
   };
 
@@ -71,10 +69,14 @@ var onGap = function( gap, callback ){
 };
 
 // Find gaps between now and a month ago
-var start = new Date().addMonths(-1);
-var end   = new Date();
+var query = {
+  start:    new Date().addMonths(-1)
+, end:      new Date()
+, units:    'minute'
+, interval: 10
+};
 
-db.nmt_leqs.findGaps( start, end, function( error, gaps ){
+db.leqs.findGaps( start, end, function( error, gaps ){
   if ( error ) return onError( error );
 
   // Aggregate each gap by day

@@ -7,6 +7,6 @@ module.exports = {
   , date:         { type: 'int' }
   , size:         { type: 'int' }
   , last_hour:    { type: 'int' }
-  , createdAt:    { type: 'timestamp', default: 'now()' }
+  , created_at:   { type: 'timestamp', default: 'now()' }
   }
 };

@@ -26,12 +26,12 @@ module.exports = function( dirac ){
     });
   };
 
-  dirac.dals.jobs.find( {}, function( error, jobs ){
-    if ( error ) throw error; // TODO
+  // dirac.dals.jobs.find( {}, function( error, jobs ){
+  //   if ( error ) throw error; // TODO
 
-    jobs.forEach( registerJobView );
-    dirac.createViews();
-  });
+  //   jobs.forEach( registerJobView );
+  //   dirac.createViews();
+  // });
 
   // Ensure nmt_id is also returned on inserts
   dirac.dals.jobs.before( 'insert', function( $query, schema, next ){

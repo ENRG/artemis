@@ -15,6 +15,8 @@ var onError = function( error ){
 };
 
 var onNmtLoaded = function( nmt, callback ){
+  console.log( 'NMT', nmt.id );
+
   var ftp = new utils.FtpClient();
 
   var onFile = function( file, callback ){
@@ -31,6 +33,8 @@ var onNmtLoaded = function( nmt, callback ){
       if ( log ) return callback();
       
       var p = path.join( config.nmt.remoteLeqPath, file.name );
+
+      console.log('  => downloading:', file.name );
 
       ftp.get( p, function( error, fstream ){
         if ( error ) return callback( error );

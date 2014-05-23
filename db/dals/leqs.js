@@ -58,18 +58,38 @@ module.exports = {
     });
 
     var $query = {
+      with: []
+    , type: 'union'
+    , queries: []
+    };
+
+    // Query for the current gap
+    $query.with.push({
+      type: 'select'
+    , table: this.table
+    , name: 'curr'
+    , columns: [
+        { expression: 'now() - "createdAt"',  alias: 'duration' }
+      , { expression: 'now()',  alias: 'end' }
+      , { name: 'createdAt', alias: 'start'}
+      ]
+    , order: { id: 'desc' }
+    , limit: 1
+    });
+
+    $query.queries.push({
       type: 'select'
     , columns: [
         { table: 'pairs', name: 'gap',                  alias: 'duration' }
       , { table: 'pairs', name: 'createdAt',            alias: 'end' }
-      , { expression: 'pairs."createdAt" - pairs.gap',  alias: 'start'}
+      , { expression: 'pairs."createdAt" - pairs.gap',  alias: 'start' }
       ]
     , table: {
         type: 'select'
       , alias: 'pairs'
       , table: this.table
       , columns: [
-          'createdAt'
+          'createdAt', 'nmt_id'
         , { expression: '"createdAt" - lag( "createdAt" ) over w', alias: 'gap' }
         ]
       , window: {
@@ -85,11 +105,13 @@ module.exports = {
           $custom: [ 'pairs."createdAt" - pairs.gap >= $1', query.start ]
         }
       }
-    };
+    });
 
-    if ( query.end ){
-      $query.where.createdAt = { $lt: query.end };
-    }
+    $query.queries.push({
+      type: 'select'
+    , table: 'curr'
+    , columns: ['*']
+    });
 
     return this.query( $query, callback );
   }
